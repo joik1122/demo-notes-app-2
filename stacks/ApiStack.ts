@@ -7,6 +7,7 @@ export function ApiStack({ stack }: StackContext) {
     // create api
     const api = new Api(stack, "Api", {
         defaults: {
+            authorizer: "iam",
             function: {
                 bind: [table] // bind the table to the functions (api can access the dynamodb table)
             }
@@ -26,5 +27,5 @@ export function ApiStack({ stack }: StackContext) {
     });
 
     // return the api
-    return api;
+    return { api };
 }
